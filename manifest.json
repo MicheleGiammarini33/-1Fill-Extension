@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Curriculum Auto-Fill",
+  "version": "1.0",
+  "description": "An extension to auto-fill resumes online using AI.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.linkedin.com/*", "https://*.indeed.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "host_permissions": [
+    "https://wia.openai.azure.com/*"
+  ]
+}
